@@ -58,8 +58,14 @@ namespace(:customs) do
       ln -nfs #{shared_path}/Config/database.php #{release_path}/Config/database.php
     CMD
   end
+  task :symlink_tmp, :roles => :app do
+    run <<-CMD
+      ln -nfs #{shared_path}/tmp #{release_path}/tmp
+    CMD
+  end
 end
 
 after "deploy:symlink", "customs:config_core"
 after "deploy:symlink", "customs:config_database"
+after "deploy:symlink","customs:symlink_tmp"
 after "deploy", "deploy:cleanup"
