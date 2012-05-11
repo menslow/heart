@@ -39,8 +39,13 @@
 			<div class="tools container_12">
 				<div class="account prefix_8 grid_4">
 					<ul class="right">
-						<li><a href="#">Register</a></li>
-						<li><a href="#">Sign In</a></li>
+					<?php if(isset($user)) : ?>
+						<li><?php echo $this->Html->link(__('Log Out'), '/users/logout'); ?></li>
+						<li><?php echo $this->Html->link($user['username'], '/users/view/'.$user['id']); ?></li>
+					<?php else : ?>
+						<li><?php echo $this->Html->link(__('Register'), '/users/add'); ?></li>
+						<li><?php echo $this->Html->link(__('Sign In'), '/users/login'); ?></li>
+					<?php endif; ?>
 					</ul>
 				</div>
 			</div>
@@ -68,8 +73,8 @@
 			<div class="wide banner">
 				<section class="container_12">
 					<article class="grid_12">
-						<h1>Death Star</h1>
-						<p>That's no moon... that's a space station.</p>
+						<h1><?php __('Death Star'); ?></h1>
+						<p><?php __('That\'s no moon... that\'s a space station.'); ?></p>
 					</article>
 				</section>	
 			</div>
@@ -90,7 +95,7 @@
 			<footer>
 				<div class="inner container_12">
 					<div class="grid_6">
-						<p>&copy; <?php echo date('Y'); ?> Mister Machine, LLC - all rights reserved </p>
+						<p>&copy; <?php echo date('Y'); ?> Mister Machine, LLC - <?php __('all rights reserved'); ?></p>
 					</div>
 					<div class="grid_6">
 						<!-- footer menu -->
@@ -100,8 +105,10 @@
 		</div>
 
 	</div>
+
 	<?php //debug($this->Session, true); ?>
-	<?php echo $this->element('sql_dump'); ?>
+	<?php //debug($user, true); ?>
+	<?php //echo $this->element('sql_dump'); ?>
 
 </body>
 </html>

@@ -63,9 +63,15 @@ namespace(:customs) do
       ln -nfs #{shared_path}/tmp #{release_path}/tmp
     CMD
   end
+  task :symlink_plugin, :roles => :app do
+    run <<-CMD
+      ln -nfs #{shared_path}/Plugin #{release_path}/Plugin
+    CMD
+  end
 end
 
 after "deploy:symlink", "customs:config_core"
 after "deploy:symlink", "customs:config_database"
 after "deploy:symlink","customs:symlink_tmp"
+after "deploy:symlink","customs:symlink_plugin"
 after "deploy", "deploy:cleanup"

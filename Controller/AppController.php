@@ -13,5 +13,8 @@ class AppController extends Controller {
 	function beforeFilter() {
 		// allow access to all index and view actions
 		$this->Auth->allow('index', 'view');
+
+		$this->set('user', $this->Auth->User());
+
 	}
 }
