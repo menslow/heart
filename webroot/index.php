@@ -63,9 +63,9 @@
 
 		// set local path to cakephp library
 		if ( file_exists( dirname( __FILE__ ) . DS . '..' . DS . '..' . DS . 'env_local' ) ) {
-			define('CAKE_CORE_INCLUDE_PATH', '..'. DS . '..' . DS . '/cakephp2.1/lib/');
+			define('CAKE_CORE_INCLUDE_PATH', '..'. DS . '..' . DS . '/cakephp2.2.1/lib/');
 		} else {
-			define('CAKE_CORE_INCLUDE_PATH', '..'. DS . '..' . DS . '..' . DS . 'shared/cakephp2.1/lib/');
+			define('CAKE_CORE_INCLUDE_PATH', '..'. DS . '..' . DS . '..' . DS . 'shared/cakephp2.2.1/lib/');
 		}
 
 	}
